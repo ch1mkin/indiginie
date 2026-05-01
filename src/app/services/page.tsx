@@ -24,9 +24,9 @@ export default async function PublicServicesPage() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Catalog</p>
-            <h1 className="mt-3 text-4xl font-black tracking-tight">The suite of authority</h1>
+            <h1 className="mt-3 text-4xl font-black tracking-tight">Our Services</h1>
             <p className="mt-3 max-w-2xl text-on-surface-variant">
-              Explore the same institutional services available inside the Indiginie client workspace.
+              Comprehensive support services designed specifically for NRIs.
             </p>
           </div>
           <Link className={cn(buttonVariants(), "self-start")} href="/auth/login">

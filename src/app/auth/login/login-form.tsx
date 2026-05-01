@@ -98,11 +98,12 @@ export default function LoginForm({ initialMode = "login" }: { initialMode?: "lo
     });
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-surface px-4 py-16 text-on-surface">
-      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 animate-pulse rounded-full bg-brand-sky/20 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 bottom-0 h-96 w-96 animate-pulse rounded-full bg-primary/10 blur-3xl" />
+    <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-b from-blue-50/60 via-surface to-surface px-4 py-10 text-on-surface shadow-sm md:px-8">
+      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 animate-pulse rounded-full bg-brand-sky/25 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-96 w-96 animate-pulse rounded-full bg-primary/15 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-blue-300/10 blur-2xl" />
       <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-2">
-        <div className="hidden flex-col justify-center rounded-2xl border border-border/70 bg-white/70 p-10 shadow-sm backdrop-blur lg:flex">
+        <div className="hidden flex-col justify-center rounded-2xl border border-blue-100 bg-gradient-to-b from-white/90 to-blue-50/70 p-10 shadow-sm backdrop-blur lg:flex">
           <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Indiginie Secure Desk</p>
           <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight">
             Built for NRIs managing India matters globally.
@@ -118,7 +119,7 @@ export default function LoginForm({ initialMode = "login" }: { initialMode?: "lo
           </ul>
         </div>
 
-        <div className="mx-auto w-full max-w-xl space-y-6">
+        <div className="mx-auto w-full max-w-xl space-y-6 self-center">
           <Link href="/" className="text-sm font-semibold text-primary">
             ← Back
           </Link>
@@ -130,7 +131,7 @@ export default function LoginForm({ initialMode = "login" }: { initialMode?: "lo
               Signup
             </Button>
           </div>
-          <Card className="animate-in fade-in zoom-in-95 duration-300">
+          <Card className="animate-in fade-in zoom-in-95 border-blue-100 bg-white/95 duration-300">
           <CardHeader>
             <CardTitle>{mode === "login" ? "Welcome back" : "Create your account"}</CardTitle>
             <CardDescription>

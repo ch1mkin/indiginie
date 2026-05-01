@@ -35,7 +35,7 @@ export async function PublicChrome({ children }: { children: React.ReactNode }) 
       </div>
       <header className="glass-nav fixed top-0 z-50 w-full border-b border-border/60 bg-white/90 shadow-[0px_20px_40px_rgba(25,28,29,0.06)]">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-base font-black tracking-tighter text-primary sm:text-xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-lg font-black tracking-tighter text-primary sm:text-2xl">
             {siteLogoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={siteLogoUrl} alt="Indiginie logo" className="size-7 rounded-md object-cover sm:size-8" />

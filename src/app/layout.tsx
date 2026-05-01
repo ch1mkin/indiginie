@@ -22,13 +22,25 @@ export async function generateMetadata(): Promise<Metadata> {
   const supabase = await createClient();
   const { data } = await supabase.from("landing_content").select("value").eq("key", "site_favicon_url").maybeSingle();
   const favicon = data?.value?.trim();
+  const description =
+    "Professional NRI services in India including property management, legal assistance, and documentation support. Manage everything from abroad with trusted experts.";
 
   return {
     title: {
       default: "Indiginie NRI Solutions LLP",
       template: "%s | Indiginie",
     },
-    description: "Institutional-grade NRI service management — requests, documents, and progress in one workspace.",
+    description,
+    openGraph: {
+      title: "Indiginie NRI Solutions LLP",
+      description,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Indiginie NRI Solutions LLP",
+      description,
+    },
     icons: favicon ? { icon: favicon, shortcut: favicon, apple: favicon } : undefined,
   };
 }

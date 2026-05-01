@@ -189,18 +189,18 @@ export async function Landing() {
 
         <section className="rounded-3xl bg-inverse-surface px-6 py-16 text-center text-inverse-on-surface md:mx-auto md:max-w-6xl md:px-16">
           <h2 className="text-3xl font-black tracking-tighter md:text-5xl">
-            {content.get("final_cta_title") || "Secure your global legacy"}
+            {content.get("final_cta_title") || "Ready to Get Started?"}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base text-slate-200 md:text-lg">
             {content.get("final_cta_body") ||
-              "Join the private network managing India portfolios with institutional clarity — powered by Supabase-grade security and human experts."}
+              "Join thousands of NRIs who trust Indiginie for their support needs in India"}
           </p>
           <div className="mt-10 flex justify-center">
             <Link
               className="inline-flex items-center justify-center rounded-md bg-brand-sky px-10 py-4 text-sm font-bold text-white shadow-2xl transition-transform active:scale-95"
               href="/auth/login"
             >
-              Request private invitation
+              Lets get Started
             </Link>
           </div>
         </section>

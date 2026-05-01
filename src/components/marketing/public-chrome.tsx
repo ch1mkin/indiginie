@@ -35,13 +35,13 @@ export async function PublicChrome({ children }: { children: React.ReactNode }) 
       </div>
       <header className="glass-nav fixed top-0 z-50 w-full border-b border-border/60 bg-white/90 shadow-[0px_20px_40px_rgba(25,28,29,0.06)]">
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-lg font-black tracking-tighter text-primary sm:text-2xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-lg font-bold tracking-tight text-primary sm:text-2xl">
             {siteLogoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={siteLogoUrl} alt="Indiginie logo" className="size-7 rounded-md object-cover sm:size-8" />
             ) : null}
             <span className="sm:hidden">INDIGINIE</span>
-            <span className="hidden sm:inline">Indiginie NRI Solutions</span>
+            <span className="hidden sm:inline">INDIGINIE NRI SOLUTIONS</span>
           </Link>
           <div className="hidden items-center gap-8 text-sm font-semibold tracking-tight text-on-surface-variant lg:flex">
             <Link className="hover:text-primary transition-colors" href="/services">

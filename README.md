@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Indiginie NRI Solutions LLP — Client Portal
 
-## Getting Started
+Production-style MVP built with **Next.js (App Router)**, **Supabase** (Auth, Postgres, Storage), **Tailwind CSS v4**, and **shadcn/ui**.
 
-First, run the development server:
+## Local development
 
 ```bash
+cp .env.example .env.local
+# fill NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set `NEXT_PUBLIC_SITE_URL` to your local or deployed origin so magic links land correctly.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a Supabase project.
+2. **Authentication → Providers → Email**: enable **Email OTP** (magic link / OTP per your project settings).
+3. **Authentication → URL configuration**: add `http://localhost:3000/auth/callback` (and production callback URL) to redirect allow list.
+4. Run SQL in `supabase/migrations/` via the SQL editor or CLI (`000001_init.sql` then `000002_seed.sql`).
+5. In **Storage**, confirm bucket `documents` exists (migration inserts it) and policies match your environment if you adjust paths.
+6. Promote your first admin in SQL, for example:
 
-## Learn More
+```sql
+update public.profiles
+set role = 'admin'
+where id = (select id from auth.users where email = 'you@company.com');
+```
 
-To learn more about Next.js, take a look at the following resources:
+Create employees the same way with `role = 'employee'`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Useful paths
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Marketing: `/`
+- Public catalog: `/services`
+- Email OTP login: `/auth/login`
+- Dashboards: `/dashboard/user`, `/dashboard/admin`, `/dashboard/employee`
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — Next dev server
+- `npm run build` — Production build
+- `npm run lint` — ESLint

@@ -40,7 +40,8 @@ export async function PublicChrome({ children }: { children: React.ReactNode }) 
               // eslint-disable-next-line @next/next/no-img-element
               <img src={siteLogoUrl} alt="Indiginie logo" className="size-7 rounded-md object-cover sm:size-8" />
             ) : null}
-            <span className="max-w-[160px] truncate sm:max-w-none">Indiginie NRI Solutions</span>
+            <span className="sm:hidden">INDIGINIE</span>
+            <span className="hidden sm:inline">Indiginie NRI Solutions</span>
           </Link>
           <div className="hidden items-center gap-8 text-sm font-semibold tracking-tight text-on-surface-variant lg:flex">
             <Link className="hover:text-primary transition-colors" href="/services">
@@ -130,7 +131,10 @@ export async function PublicChrome({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         <div className="border-t border-blue-900/70 py-4 text-center text-xs text-blue-200">
-          Powered by SalhanTech.com
+          Powered by{" "}
+          <a href="https://salhantech.com" target="_blank" rel="noreferrer" className="underline underline-offset-2">
+            SalhanTech.com
+          </a>
         </div>
       </footer>
     </div>

@@ -110,6 +110,16 @@ export function DashboardShell({
                         );
                       })}
                     </nav>
+                    <div className="mt-4 space-y-2 px-4">
+                      <Link href="/" className={cn(buttonVariants({ variant: "outline", size: "sm" }), "w-full justify-center")}>
+                        Visit website
+                      </Link>
+                      <form action={signOut}>
+                        <Button type="submit" variant="outline" size="sm" className="w-full">
+                          Sign out
+                        </Button>
+                      </form>
+                    </div>
                   </SheetContent>
                 </Sheet>
                 <div>

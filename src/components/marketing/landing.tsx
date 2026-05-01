@@ -50,7 +50,7 @@ export async function Landing() {
             <div className="editorial-grid items-center">
               <div className="col-span-12 md:col-span-7 lg:col-span-6">
                 <span className="mb-6 inline-flex items-center rounded-full bg-secondary-container px-3 py-1 text-xs font-bold tracking-[0.2em] text-on-secondary-container uppercase">
-                  Institutional grade NRI wealth
+                  Welcome To INDIGINIE NRI SOLUTIONS LLP.
                 </span>
                 <h1 className="mb-8 text-4xl leading-[1.05] font-black tracking-tighter text-on-surface md:text-7xl">
                   {heroTitle}

@@ -15,6 +15,7 @@ import type { NotificationRow } from "@/lib/types";
 export function NotificationBell() {
   const supabase = useMemo(() => createClient(), []);
   const [items, setItems] = useState<NotificationRow[]>([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -36,16 +37,32 @@ export function NotificationBell() {
 
   const unread = items.filter((x) => !x.read_at).length;
 
+  const markAllRead = async () => {
+    const unreadIds = items.filter((x) => !x.read_at).map((x) => x.id);
+    if (unreadIds.length === 0) return;
+    const seenAt = new Date().toISOString();
+    await supabase.from("notifications").update({ read_at: seenAt }).in("id", unreadIds);
+    setItems((curr) => curr.map((x) => (!x.read_at ? { ...x, read_at: seenAt } : x)));
+  };
+
   const markRead = async (id: string) => {
     await supabase.from("notifications").update({ read_at: new Date().toISOString() }).eq("id", id);
     setItems((curr) => curr.map((x) => (x.id === id ? { ...x, read_at: new Date().toISOString() } : x)));
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (next) {
+          void markAllRead();
+        }
+      }}
+    >
       <DropdownMenuTrigger className="border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground relative inline-flex size-8 items-center justify-center rounded-md border shadow-xs outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
         <Bell className="size-4" />
-        {unread > 0 ? (
+        {unread > 0 && !open ? (
           <span className="absolute -top-1 -right-1 rounded-full bg-primary px-1.5 text-[10px] text-white">{unread}</span>
         ) : null}
       </DropdownMenuTrigger>
